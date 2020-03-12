@@ -1,11 +1,10 @@
 <template>
-  <div class="podcasts-index">
+  <div class="podcasts-show">
     <div class="container">
 
-      <h1>Podcasts</h1>
+      <h1>{{ podcast.name }}</h1>
       <div v-for="podcast in podcasts">
         <div>
-          <h2>Name: {{ podcast.name }}</h2>
           <h2>Description: {{ podcast.description }}</h2>
           <h2>Email: {{ podcast.email }}</h2>
           <h2><td><router-link v-bind:to="'/users/' + podcast.id + '/edit'">Update</router-link></td></h2>
