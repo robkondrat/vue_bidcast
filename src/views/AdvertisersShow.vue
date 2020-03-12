@@ -3,7 +3,6 @@
     <div class="container">
 
       <h1>{{ advertiser.name }}</h1>
-      <div v-for="advertiser in advertisers">
         <div>
           <h2>Description: {{ advertiser.description }}</h2>
           <h2>Email: {{ advertiser.email }}</h2>
@@ -21,14 +20,19 @@
   export default {
     data: function() {
       return {
-        advertisers: [],
+        advertiser: {
+          name: "",
+          description: "",
+          image: "",
+          email: ""
+        }
       };
     },
     created: function() {
       axios
-      .get("/api/advertisers")
+      .get("/api/advertisers/" + this.$route.params.id)
       .then(response => {
-        this.advertisers = response.data;
+        this.advertiser = response.data;
       });
     },
     methods: {}
