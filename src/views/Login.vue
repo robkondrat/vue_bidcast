@@ -45,7 +45,23 @@
         .then(response => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
+
+          if (response.data.type == "Podcast") {
+            this.$parent.podcastId = response.data.user_id;
+            localStorage.setItem("podcastId", response.data.user_id);
+            this.$router.push("/podcasts/" + response.data.user_id);
+            this.$parent.advertiserId = "";
+            localStorage.removeItem("advertiserId");
+          }
+
+          if (response.data.type == "Advertiser") {
+            this.$parent.advertiserId = response.data.user_id;
+            localStorage.setItem("advertiserId", response.data.user_id);
+            this.$router.push("/");
+            this.$parent.podcastId = "";
+            localStorage.removeItem("podcastId");
+
+          }
         })
         .catch(error => {
           this.errors = ["invalid email or password."];

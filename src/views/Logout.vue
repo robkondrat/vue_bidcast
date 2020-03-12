@@ -11,7 +11,15 @@
     created: function() {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("jwt");
+
+      this.$parent.podcastId = "";
+      localStorage.removeItem("podcastId");
+      this.$parent.advertiserId = "";
+      localStorage.removeItem("advertiserId");
       this.$router.push("/");
+
+
+
     }
   };
 </script>

@@ -13,7 +13,7 @@
       <tbody>
 
         <tr v-for="space in spaces">
-          <td>{{ space.podcast_id }}</td>
+          <td><router-link v-bind:to="'/podcasts/' + space.podcast.id">{{ space.podcast.name }}</router-link></td>
           <td>{{ space.length }} sec.</td>
           <td>{{ space.active }}</td>
           <td>coming soon</td>
