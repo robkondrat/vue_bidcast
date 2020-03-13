@@ -9,10 +9,10 @@
         </div>
 
         <ul>
-          <li v-for="error in errors">{{ error }}</li>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
         </ul>
-
         <table align="center">
+
           <tr>
             <td>Name:</td>
             <td><input type="text" v-model="name"></td>

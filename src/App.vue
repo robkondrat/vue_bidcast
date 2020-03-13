@@ -46,6 +46,7 @@
       if (podcastId) {
         this.podcastId = podcastId;
       };
+      
 
       var advertiserId = localStorage.getItem("advertiserId");
       if (advertiserId) {

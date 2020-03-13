@@ -11,7 +11,7 @@
         <table align="center">
           <tr>
             <td><label>Price:</label></td>
-            <td><input type="text" v-model="bid.price"></td>
+            <td><input type="text" v-model="price"></td>
           </tr>
 
           <td>
@@ -31,21 +31,25 @@
   export default {
     data: function() {
       return {
-        bid: {
-          price: ""
-        }, 
-      errors: []
+        price: "",
+        space_id: "",
+        errors: []
       };
     },
-    created: function() {},
+    created: function() {
+      this.space_id = this.$route.query.space_id;
+
+    },
     methods: {
       createBid: function() {
-        let params = {
-          price: this.price
+
+        var params = {
+          price: this.price,
+          space_id: this.space_id
         }
 
         axios.post("/api/bids", params).then(response => {
-          this.bids.push(response.data);
+          this.$router.push("/podcasts/" + response.data.space.podcast.id );
         }).catch(error => console.log(error.response));
       }
     }

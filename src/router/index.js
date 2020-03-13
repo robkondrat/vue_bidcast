@@ -7,6 +7,7 @@ import PodcastsShow from '../views/PodcastsShow.vue'
 import AdvertisersShow from '../views/AdvertisersShow.vue'
 
 import BidsNew from '../views/BidsNew.vue'
+import SpacesNew from '../views/SpacesNew.vue'
 
 import UsersEdit from '../views/UsersEdit.vue'
 import Signup from '../views/Signup.vue'
@@ -27,6 +28,7 @@ const routes = [
   {path: '/advertisers/:id', name: 'advertisers-show', component: AdvertisersShow},
 
   {path: '/bids/new', name: 'bids-new', component: BidsNew},
+  {path: '/spaces/new', name: 'spaces-new', component: SpacesNew},
 
   {path: '/users/:id/edit', name: 'users-edit', component: UsersEdit},
 

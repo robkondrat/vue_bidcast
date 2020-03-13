@@ -17,7 +17,7 @@
           <td>{{ space.length }} sec.</td>
           <td>{{ space.active }}</td>
           <td>coming soon</td>
-          <td><a href="/bids/new">Place Bid</a></td>
+          <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
         </tr>
       </tbody>
     </table>
@@ -42,6 +42,7 @@ export default {
       this.spaces = response.data;
     });
   }
+  
 }
   
 </script>

@@ -6,7 +6,9 @@
         <div>
           <h2>Description: {{ podcast.description }}</h2>
           <h2>Email: {{ podcast.email }}</h2>
-          <h2><td><router-link v-bind:to="'/users/' + podcast.id + '/edit'">Update</router-link></td></h2>
+          <h2><router-link v-bind:to="'/spaces/new'">New Space</router-link></h2>
+          <h2><router-link v-bind:to="'/users/' + podcast.id + '/edit'" v-if="$parent.podcastId">Update Podcast</router-link></h2>
+
 
         </div>
       </div>
@@ -24,7 +26,8 @@
           name: "",
           description: "",
           image: "",
-          email: ""
+          email: "",
+          id: ""
         }
       };
     },
@@ -34,6 +37,12 @@
       .then(response => {
         this.podcast = response.data;
       });
+
+      axios
+        .get("/api/users")
+        .then(response => {
+          this.user = response.data;
+        });
     },
     methods: {
       destroyMarker: function() {

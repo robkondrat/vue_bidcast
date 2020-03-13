@@ -46,6 +46,8 @@
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
 
+          console.log(response.data);
+
           if (response.data.type == "Podcast") {
             this.$parent.podcastId = response.data.user_id;
             localStorage.setItem("podcastId", response.data.user_id);
