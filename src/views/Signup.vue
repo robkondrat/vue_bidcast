@@ -15,17 +15,17 @@
 
           <tr>
             <td>Name:</td>
-            <td><input type="text" v-model="name"></td>
+            <td><input type="text" name="name" v-model="name"></td>
           </tr>
 
           <tr>
             <td>Description:</td>
-            <td><input type="text" v-model="description"></td>
+            <td><input type="text" name="description" v-model="description"></td>
           </tr>
 
           <tr>
             <td>Image:</td>
-            <td>image coming soon</td>
+            <td><input type="file" v-on:change="setFile($event)" ref="fileInput"></td>
           </tr>
 
           <tr>
@@ -71,6 +71,7 @@
       return {
         name: "", 
         description: "",
+        image: "",
         email: "",
         password: "",
         passwordConfirmation: "",
@@ -78,24 +79,31 @@
         errors: []
       };
     },
+    created: function() {},
     methods: {
+      setFile: function(event) {
+        if (event.target.files.length > 0) {
+          this.image = event.target.files[0];
+        }
+      },
+
       submit: function() {
-        var params = {
-          name: this.name,
-          description: this.description,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.passwordConfirmation,
-          type: this.type
-        };
-        axios
-        .post("api/users", params)
-        .then(response => {
-          this.$router.push("/login");
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
+        var formData = new FormData();
+          formData.append("name", this.name);
+          formData.append("description", this.description);
+          formData.append("image", this.image);
+          formData.append("email", this.email);
+          formData.append("password", this.password);
+          formData.append("passwordConfirmation", this.passwordConfirmation);
+          formData.append("type", this.type);
+
+          axios.post("api/users", formData)
+          .thn(response => {
+            this.$router.push("/login");
+          }).catch(error => {
+            this.errors = error.response.data.errors;
+          });
+        
       }
     }
   };

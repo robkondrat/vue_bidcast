@@ -16,13 +16,13 @@
             </thead>
             <tbody>
 
-              <tr v-for="bid in bids">
+              <!-- <tr v-for="bid in bids">
                 <td><router-link v-bind:to="'/advertiser/' + advertiser.id">{{ advertiser.bid.space.podcast.name }}</router-link></td>
                 <td>{{ advertiser.bid.price }} sec.</td>
                 <td>{{ space.active }}</td>
                 <td>coming soon</td>
                 <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
           <h2><td><router-link v-bind:to="'/users/' + advertiser.id + '/edit'">Update Profile</router-link></td></h2>

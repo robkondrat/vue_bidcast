@@ -6,6 +6,9 @@
         <div>
           <h2>Description: {{ podcast.description }}</h2>
           <h2>Email: {{ podcast.email }}</h2>
+          <div>
+
+          </div>
           <table>
             <thead>
               <th>Id</th>
