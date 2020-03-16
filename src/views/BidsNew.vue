@@ -11,7 +11,7 @@
         <table align="center">
           <tr>
             <td><label>Price:</label></td>
-            <td><input type="text" v-model="price"></td>
+            <td><input type="number" v-model="price"></td>
           </tr>
 
           <td>

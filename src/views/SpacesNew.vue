@@ -11,7 +11,15 @@
         <table align="center">
           <tr>
             <td><label>Length (in seconds):</label></td>
-            <td><input type="text" v-model="length"></td>
+            <select id="length" v-model="length">
+              <option value="30">30</option>
+              <option value="60">60</option>
+              <option value="90">90</option>
+              <option value="120">120</option>
+              <option value="150">150</option>
+              <option value="180">180</option>
+              <option value="210">210</option>
+            </select>
           </tr>
 
           <td>
@@ -32,7 +40,8 @@
     data: function() {
       return {
         length: "",
-        // podcast_id: "",
+        active: true,
+        podcast_id: "",
         errors: []
       };
     },
@@ -46,7 +55,6 @@
         var params = {
           length: this.length,
           active: true
-          // space_id: this.space_id
         }
 
         axios.post("/api/spaces", params).then(response => {

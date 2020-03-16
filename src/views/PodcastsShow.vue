@@ -6,7 +6,26 @@
         <div>
           <h2>Description: {{ podcast.description }}</h2>
           <h2>Email: {{ podcast.email }}</h2>
-          <h2><router-link v-bind:to="'/spaces/new'">New Space</router-link></h2>
+          <table>
+            <thead>
+              <th>Id</th>
+              <th>Length</th>
+              <th>Price</th>
+              <th>Time Left</th>
+              <th>Update</th>
+            </thead>
+            <tbody>
+
+<!--               <tr v-for="podcast.space in podcast.spaces">
+                <td><router-link v-bind:to="'/spaces/' + podcast.space.id">{{ space.id }}</router-link></td>
+                <td>{{ space.length }} sec.</td>
+                <td>{{ space.bid.price.max }}</td>
+                <td>coming soon</td>
+                <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
+              </tr> -->
+            </tbody>
+          </table>
+          <h2><router-link v-bind:to="'/spaces/new'" v-if="$parent.podcastId">New Space</router-link></h2>
           <h2><router-link v-bind:to="'/users/' + podcast.id + '/edit'" v-if="$parent.podcastId">Update Podcast</router-link></h2>
 
 
@@ -27,6 +46,7 @@
           description: "",
           image: "",
           email: "",
+          spaces: [],
           id: ""
         }
       };
@@ -45,7 +65,7 @@
         });
     },
     methods: {
-      destroyMarker: function() {
+      destroyPodcast: function() {
         axios
           .delete("api/podcasts" + this.$route.params.id)
           .then(response => {

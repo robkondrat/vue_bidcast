@@ -1,7 +1,7 @@
 <template>
   <div class="users-edit">
     <div class="container">
-      <form v-on:submit.prevent="updateUser()">
+      <form>
         <h1 class="subtitle">Update Profile</h1>
 
         <div v-for="error in errors">{{ error }}</div>
@@ -28,14 +28,14 @@
             <!-- <td><input type="text" v-model="user.name"></td> -->
           </tr>
 
-<!--           <tr>
-            <td><label>Password (required):</label></td>
-            <td><input type="password" v-model="user.password"></td>
-          </tr> -->
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Edit User" v-on:click="updateUser()"></td>
+          </tr>
 
           <tr>
             <td></td>
-            <td><input type="submit" value="Edit User"></td>
+            <td><input type="submit" value="Delete Profile" v-on:click="deleteProfile()"></td>
           </tr>
 
         </table>
@@ -85,6 +85,38 @@
         }).catch(error => {
           this.errors = error.response.data.errors;
         });
+      },
+      deleteProfile: function() {
+        if (this.user.type === "Podcast") {
+          axios
+            .delete("api/podcasts/" + this.$route.params.id)
+            .then(response => {
+              this.$router.push("/")
+            });
+            delete axios.defaults.headers.common["Authorization"];
+            localStorage.removeItem("jwt");
+
+            this.$parent.podcastId = "";
+            localStorage.removeItem("podcastId");
+            this.$parent.advertiserId = "";
+            localStorage.removeItem("advertiserId");
+            this.$router.push("/");
+        }else {
+          axios
+            .delete("api/advertisers/" + this.$route.params.id)
+            .then(response => {
+              this.$router.push("/")
+            });
+            delete axios.defaults.headers.common["Authorization"];
+            localStorage.removeItem("jwt");
+
+            this.$parent.podcastId = "";
+            localStorage.removeItem("podcastId");
+            this.$parent.advertiserId = "";
+            localStorage.removeItem("advertiserId");
+            this.$router.push("/");
+        };
+
       }
     }
   };
