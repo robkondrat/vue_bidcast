@@ -4,6 +4,7 @@
 
       <h1>{{ podcast.name }}</h1>
         <div>
+          <h2><img :src="podcast.image_url"></h2>
           <h2>Description: {{ podcast.description }}</h2>
           <h2>Email: {{ podcast.email }}</h2>
           <div>
@@ -19,13 +20,13 @@
             </thead>
             <tbody>
 
-<!--               <tr v-for="podcast.space in podcast.spaces">
-                <td><router-link v-bind:to="'/spaces/' + podcast.space.id">{{ space.id }}</router-link></td>
+              <tr v-for="space in podcast.spaces">
+                <td><router-link v-bind:to="'/spaces/' + space.id">{{ space.id }}</router-link></td>
                 <td>{{ space.length }} sec.</td>
-                <td>{{ space.bid.price.max }}</td>
+                <!-- <td>{{ space.bid.price }}</td> -->
                 <td>coming soon</td>
                 <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
-              </tr> -->
+              </tr>
             </tbody>
           </table>
           <h2><router-link v-bind:to="'/spaces/new'" v-if="$parent.podcastId">New Space</router-link></h2>

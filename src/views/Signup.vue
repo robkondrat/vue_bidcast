@@ -1,7 +1,7 @@
 <template>
   <div class="signup">
     <div class="container">
-      <form v-on:submit.prevent="submit()">
+      <form v-on:submit.prevent="createUser()">
         <h1 class="subtitle">Signup</h1>
 
         <div>
@@ -15,17 +15,18 @@
 
           <tr>
             <td>Name:</td>
-            <td><input type="text" name="name" v-model="name"></td>
+            <td><input type="text" v-model="name"></td>
           </tr>
 
           <tr>
             <td>Description:</td>
-            <td><input type="text" name="description" v-model="description"></td>
+            <td><input type="text" v-model="description"></td>
           </tr>
 
           <tr>
             <td>Image:</td>
             <td><input type="file" v-on:change="setFile($event)" ref="fileInput"></td>
+
           </tr>
 
           <tr>
@@ -64,7 +65,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  var axios = require("axios");
 
   export default {
     data: function() {
@@ -87,7 +88,7 @@
         }
       },
 
-      submit: function() {
+      createUser: function() {
         var formData = new FormData();
           formData.append("name", this.name);
           formData.append("description", this.description);
@@ -97,12 +98,13 @@
           formData.append("passwordConfirmation", this.passwordConfirmation);
           formData.append("type", this.type);
 
-          axios.post("api/users", formData)
-          .thn(response => {
-            this.$router.push("/login");
-          }).catch(error => {
-            this.errors = error.response.data.errors;
-          });
+        axios
+        .post("/api/users", formData)
+        .then(response => {
+          this.$router.push("/login");
+        }).catch(error => {
+          this.errors = error.response.data.errors;
+        });
         
       }
     }
