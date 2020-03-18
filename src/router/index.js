@@ -15,9 +15,6 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 
 
-
-
-
 Vue.use(VueRouter)
 
 const routes = [

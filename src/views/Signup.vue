@@ -99,7 +99,7 @@
           formData.append("type", this.type);
 
         axios
-        .post("/api/users", formData)
+        .post("http://localhost:3000/api/users", formData)
         .then(response => {
           this.$router.push("/login");
         }).catch(error => {

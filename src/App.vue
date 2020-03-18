@@ -20,6 +20,7 @@
 
                     <li><router-link to="/logout">Logout</router-link></li>
 
+                    <li><router-link to="/signup" class="btn btn-e">Signup</router-link></li>
                 </ul>
             </div>
         </div>
@@ -35,6 +36,7 @@
                 <div class="footer-logo">
                     <a href="index.html"><img src="/assets/img/logo.png" alt="Footer Logo"/></a>
                 </div>
+                <p>Responsive Multipurpose Template</p>
                 <div class="footer-social">
                     <a target="_blank" href="https://www.facebook.com/encodeslife/"><i class="fa fa-facebook"></i></a>
                     <a target="_blank" href="https://twitter.com/encodeslife"><i class="fa fa-twitter"></i></a>
@@ -47,8 +49,6 @@
             </div>
         </div>
     </footer>
-
-
 
   </div>
 </template>

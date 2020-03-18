@@ -2,21 +2,23 @@
   <div class="spaces-table">
     <h1>Bidcast</h1>
 
-    <table>
+    <table align=center>
       <thead>
         <th>Podcast Name</th>
         <th>Length</th>
-        <th>Active</th>
         <th>Time Left</th>
+        <th>Deadline</th>
+        <th>Highest Bid</th>
         <th>Update</th>
       </thead>
       <tbody>
 
-        <tr v-for="space in spaces">
+        <tr v-if="space.active" v-for="space in spaces">
           <td><router-link v-bind:to="'/podcasts/' + space.podcast.id">{{ space.podcast.name }}</router-link></td>
           <td>{{ space.length }} sec.</td>
-          <td>{{ space.active }}</td>
-          <td>coming soon</td>
+          <td>{{ space.time_left }}</td>
+          <td>{{ space.deadline }}</td>
+          <td>{{ space.highest_bid }}</td>
           <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
         </tr>
       </tbody>
@@ -41,6 +43,8 @@ export default {
     .then(response => {
       this.spaces = response.data;
     });
+  }, 
+  methods: {
   }
   
 }
