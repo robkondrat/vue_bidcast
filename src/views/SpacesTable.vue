@@ -7,9 +7,8 @@
         <th>Podcast Name</th>
         <th>Length</th>
         <th>Time Left</th>
-        <th>Deadline</th>
+        <th>Deadline (CST)</th>
         <th>Highest Bid</th>
-        <th>Update</th>
       </thead>
       <tbody>
 
@@ -19,7 +18,7 @@
           <td>{{ space.time_left }}</td>
           <td>{{ space.deadline }}</td>
           <td>{{ space.highest_bid }}</td>
-          <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
+
         </tr>
       </tbody>
     </table>
