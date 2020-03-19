@@ -44,8 +44,8 @@
             <tbody>
 
               <tr v-if="space.active" v-for="space in podcast.spaces">
-                <td><router-link v-bind:to="'/spaces/' + space.id">{{ space.id }}</router-link></td>
-                <td>{{ space.winning_advertiser }}</td>
+                <td>{{ space.id }}</td>
+                <td><router-link v-bind:to="'/advertisers/' + space.winning_advertiser_id">{{ space.winning_advertiser }}</router-link></td>
                 <td>{{ space.length }} sec.</td>
                 <td>{{ space.highest_bid }}</td>
                 <td>{{space.deadline}}</td>

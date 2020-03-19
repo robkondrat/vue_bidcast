@@ -31,7 +31,7 @@
                 </tr>
               </tbody>
             </table>
-            <h2><td><router-link v-bind:to="'/users/' + advertiser.id + '/edit'">Update Profile</router-link></td></h2>
+            <h2><td><router-link v-bind:to="'/users/' + advertiser.id + '/edit'" v-if="$parent.advertiserId">Update Profile</router-link></td></h2>
           </div>
         </div>
       </div>

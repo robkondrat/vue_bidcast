@@ -1,7 +1,7 @@
 <template>
   <div class="users-edit">
     <div class="container">
-      <form>
+      <form v-on:submit.prevent="updateUser()">
         <h1 class="subtitle">Update Profile</h1>
 
         <div v-for="error in errors">{{ error }}</div>
@@ -23,19 +23,19 @@
             <td><input type="text" v-model="user.email"></td>
           </tr>
 
-          <tr>
+<!--           <tr>
             <td>Image:</td>
             <td><input type="file" v-on:change="setFile($event)" ref="fileInput"></td>
+          </tr> -->
+
+          <tr>
+            <td></td>
+            <td><input class="btn btn-primary" type="submit" value="Edit User"></td>
           </tr>
 
           <tr>
             <td></td>
-            <td><input type="submit" value="Edit User" v-on:click="updateUser()"></td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td><input type="submit" value="Delete Profile" v-on:click="deleteProfile()"></td>
+            <td><button class="btn btn-primary" @click="deleteProfile()">Delete Profile</button></td>
           </tr>
 
         </table>
@@ -55,12 +55,10 @@
         user: {
           name: "",
           description: "",
-          email: "",
-          // password: this.password,
-          // password_confirmation: this.password
-          image: ""
+          email: ""
+          // image: ""
         },
-      errors: []
+        errors: []
       };
     },
     created: function() {
@@ -71,21 +69,21 @@
       });
     },
     methods: {
-      setFile: function(event) {
-        if (event.target.files.length > 0) {
-          this.image = event.target.files[0];
-        }
-      },
+      // setFile: function(event) {
+      //   if (event.target.files.length > 0) {
+      //     this.image = event.target.files[0];
+      //   }
+      // },
       updateUser: function() {
         var formData = new FormData();
           formData.append("name", this.user.name);
           formData.append("description", this.user.description);
           formData.append("email", this.user.email);
-          formData.append("image", this.user.image);
-          // formData.append("password", this.user.password);
+          // formData.append("image", this.user.image);
+
 
         axios
-        .patch("/api/users/" + this.$router.params.id, formData)
+        .patch("/api/users/" + this.$route.params.id, formData)
         .then(response => {
           this.$router.push("/");
         })

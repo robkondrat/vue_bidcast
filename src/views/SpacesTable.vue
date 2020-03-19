@@ -6,7 +6,7 @@
       <thead>
         <th>Podcast Name</th>
         <th>Length</th>
-        <th>Time Left</th>
+
         <th>Deadline (CST)</th>
         <th>Highest Bid</th>
       </thead>
@@ -15,9 +15,10 @@
         <tr v-if="space.active" v-for="space in spaces">
           <td><router-link v-bind:to="'/podcasts/' + space.podcast.id">{{ space.podcast.name }}</router-link></td>
           <td>{{ space.length }} sec.</td>
-          <td>{{ space.time_left }}</td>
+
           <td>{{ space.deadline }}</td>
           <td>{{ space.highest_bid }}</td>
+          <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
 
         </tr>
       </tbody>
