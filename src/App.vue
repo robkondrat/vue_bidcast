@@ -4,7 +4,7 @@
     <nav class="navbar navbar-white navbar-expand-lg fixed-top">
         <div class="container">
             <div class="navbar-logo">
-                <a href="/"><img src="/assets/img/logo.png" alt="Ecada Logo" /></a>
+                <a href="/"><img src="/headphones.ico" alt="Bidcast Logo" /></a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars">TEST</i>
