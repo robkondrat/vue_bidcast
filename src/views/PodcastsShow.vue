@@ -21,7 +21,7 @@
             </thead>
             <tbody v-if="$parent.podcastId">
 
-              <tr v-if="!space.active" v-for="space in podcast.spaces">
+              <tr v-for="space in podcast.spaces" v-if="!space.active" >
                 <td>{{ space.id }}</td>
                 <td><router-link v-bind:to="'/advertisers/' + space.winning_advertiser_id">{{ space.winning_advertiser }}</router-link>
                 <td>{{ space.length }} sec.</td>
@@ -43,7 +43,7 @@
             </thead>
             <tbody>
 
-              <tr v-if="space.active" v-for="space in podcast.spaces">
+              <tr v-for="space in podcast.spaces" v-if="space.active">
                 <td>{{ space.id }}</td>
                 <td><router-link v-bind:to="'/advertisers/' + space.winning_advertiser_id">{{ space.winning_advertiser }}</router-link></td>
                 <td>{{ space.length }} sec.</td>
@@ -57,7 +57,8 @@
           <h5><router-link v-bind:to="'/spaces/new'" v-if="$parent.podcastId">New Space</router-link></h5>
 
           <h5><router-link v-bind:to="'/users/' + podcast.id + '/edit'" v-if="$parent.podcastId">Update Podcast</router-link></h5>
-            <div class="row">
+            
+          <div class="row">
             <div class="col-md-4 offset-md-1">
               <h1>New Message</h1>
               <form v-on:submit.prevent="createMessage()">
@@ -116,20 +117,38 @@
       });
 
       var cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+
       cable.subscriptions.create("MessageRoomChannel", {
-            connected: () => {
-              // Called when the subscription is ready for use on the server
-              console.log("Connected to MessageRoomChannel");
-            },
-            disconnected: () => {
-              // Called when the subscription has been terminated by the server
-            },
-            received: data => {
-              // Called when there's incoming data on the websocket for this channel
-              console.log("Data from MessageRoomChannel:", data);
-              this.messages.unshift(data); // update the messages in real time
-            }
-          });
+        connected: () => {
+          // Called when the subscription is ready for use on the server
+          console.log("Connected to MessageRoomChannel");
+        },
+        disconnected: () => {
+          // Called when the subscription has been terminated by the server
+        },
+        received: data => {
+          // Called when there's incoming data on the websocket for this channel
+          console.log("Data from MessageRoomChannel:", data);
+          this.messages.unshift(data); // update the messages in real time
+        }
+      });
+
+      cable.subscriptions.create("SpacesChannel", {
+        connected: () => {
+          // Called when the subscription is ready for use on the server
+          console.log("Connected to SpacesChannel");
+        },
+        disconnected: () => {
+          // Called when the subscription has been terminated by the server
+          console.log("Disconnected from SpacesChannel");
+        },
+        received: data => {
+          // Called when there's incoming data on the websocket for this channel
+          console.log("Data from SpacesChannel:", data);
+          this.podcast.spaces = data;
+          // this.podcast.spaces.unshift(data); // update the messages in real time
+        }
+      });
 
 
 
