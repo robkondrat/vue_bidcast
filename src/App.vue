@@ -7,7 +7,7 @@
                 <a href="/"><img src="/headphones.ico" alt="Bidcast Logo" /></a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-bars">TEST</i>
+                <i class="fa fa-bars"></i>
             </button>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav ml-auto">
@@ -34,17 +34,16 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <a href="index.html"><img src="/assets/img/logo.png" alt="Footer Logo"/></a>
+                    <a href="index.html"><img src="/headphones.ico" alt="Footer Logo"/></a>
                 </div>
-                <p>Responsive Multipurpose Template</p>
                 <div class="footer-social">
-                    <a target="_blank" href="https://www.facebook.com/encodeslife/"><i class="fa fa-facebook"></i></a>
-                    <a target="_blank" href="https://twitter.com/encodeslife"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                    <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
                 </div>
             </div>
             <div class="subfooter">
                 <p>Ecada © 2019 - All rights reserved</p>
-                <p>Made with <i class="fa fa-heart"></i> by <a target="_blank" href="http://encodeslife.com/">Encodeslife</a></p>
+                <p>Made with <i class="fa fa-heart"></i> by <a target="_blank" href="http://encodeslife.com/">Bidcast</a></p>
                 <div class="clearfix"></div>
             </div>
         </div>
