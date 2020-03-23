@@ -23,4 +23,5 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube" })
+Vue.use(VueYouTubeEmbed);
+Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube" });

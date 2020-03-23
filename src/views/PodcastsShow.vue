@@ -7,13 +7,17 @@
           <img :src="podcast.image_url" width=300>
           <h5>Description: {{ podcast.description }}</h5>
           <h5>Email: {{ podcast.email }}</h5>
-          <youtube :video-id="videoId"></youtube>
+          <!-- <input v-model="podcast.youtubeUrl"> -->
+<!--           <iframe width="420" height="315"
+          :src="podcast.youtube_url">
+          </iframe> -->
+          <iframe v-if="podcast.youtube_url" width="560" height="315" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div>
 
           </div>
 
-          <div align=center><h2>Closed Spaces</h2></div>
-          <table align=center>
+          <div v-if="$parent.podcastId === podcast.id" align=center><h2>Closed Spaces</h2></div>
+          <table v-if="$parent.podcastId === podcast.id" align=center>
             <thead>
               <th>Id</th>
               <th>Advertiser</th>
@@ -89,7 +93,10 @@
 <script>
   var axios = require("axios");
   import ActionCable from "actioncable";
-  import { getIdFromURL } from 'vue-youtube-embed'
+  import { getIdFromURL } from 'vue-youtube-embed';
+
+
+
 
   export default {
     data: function() {
@@ -101,10 +108,10 @@
           email: "",
           spaces: [],
           id: "",
-          youtube_url: ""
+          youtubeUrl: ""
         },
         messages: [],
-        newMessageBody: ""
+        newMessageBody: "",
       };
     },
     created: function() {
@@ -118,7 +125,6 @@
         this.podcast = response.data;
       });
 
-      var videoId = getIdFromURL(youtube_url);
 
 
 
@@ -155,15 +161,12 @@
           // this.podcast.spaces.unshift(data); // update the messages in real time
         }
       });
-
-
-
-
     },
     methods: {
       // getYoutubeUrl: function(youtubeUrl) {
       //   this.videoId = this.$youtube.getIdFromURL(youtubeUrl)
       // },
+
       createMessage: function() {
         var params = {
           body: this.newMessageBody
