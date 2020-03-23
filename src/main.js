@@ -1,9 +1,11 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from 'vue';
+import VueYouTubeEmbed from 'vue-youtube-embed';
+import App from './App.vue';
+import router from './router';
 import axios from "axios";
+
 
 
 axios.defaults.baseURL = 
@@ -20,3 +22,6 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+Vue.use(VueYouTubeEmbed);
+Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube" });
