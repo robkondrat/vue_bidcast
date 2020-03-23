@@ -30,6 +30,11 @@
           </tr>
 
           <tr>
+            <td>YouTube URL:</td>
+            <td><input type="text" v-model="youtubeUrl"></td>
+          </tr>
+
+          <tr>
             <td>Email:</td>
             <td><input type="text" v-model="email"></td>
           </tr>
@@ -77,6 +82,7 @@
         password: "",
         passwordConfirmation: "",
         type: "",
+        youtubeUrl: "",
         errors: []
       };
     },
@@ -93,6 +99,7 @@
           formData.append("name", this.name);
           formData.append("description", this.description);
           formData.append("image", this.image);
+          formData.append("youtubeUrl", this.youtubeUrl);
           formData.append("email", this.email);
           formData.append("password", this.password);
           formData.append("passwordConfirmation", this.passwordConfirmation);

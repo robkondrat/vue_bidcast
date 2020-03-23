@@ -116,6 +116,8 @@
         this.podcast = response.data;
       });
 
+      
+
       var cable = ActionCable.createConsumer("ws://localhost:3000/cable");
 
       cable.subscriptions.create("MessageRoomChannel", {
