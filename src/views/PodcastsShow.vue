@@ -7,6 +7,7 @@
           <img :src="podcast.image_url" width=300>
           <h5>Description: {{ podcast.description }}</h5>
           <h5>Email: {{ podcast.email }}</h5>
+          <youtube :video-id="videoId"></youtube>
           <div>
 
           </div>
@@ -88,7 +89,7 @@
 <script>
   var axios = require("axios");
   import ActionCable from "actioncable";
-
+  import { getIdFromURL } from 'vue-youtube-embed'
 
   export default {
     data: function() {
@@ -99,7 +100,8 @@
           image: "",
           email: "",
           spaces: [],
-          id: ""
+          id: "",
+          youtube_url: ""
         },
         messages: [],
         newMessageBody: ""
@@ -116,7 +118,9 @@
         this.podcast = response.data;
       });
 
-      
+      var videoId = getIdFromURL(youtube_url);
+
+
 
       var cable = ActionCable.createConsumer("ws://localhost:3000/cable");
 
@@ -157,6 +161,9 @@
 
     },
     methods: {
+      // getYoutubeUrl: function(youtubeUrl) {
+      //   this.videoId = this.$youtube.getIdFromURL(youtubeUrl)
+      // },
       createMessage: function() {
         var params = {
           body: this.newMessageBody
