@@ -1,6 +1,6 @@
 <template>
   <div class="spaces-table">
-    <h1>Bidcast</h1>
+    <img src="/bidcast-logo.png" width=450>
 
     <table align=center>
       <thead>
@@ -18,7 +18,7 @@
 
           <td>{{ space.deadline }}</td>
           <td>{{ space.highest_bid }}</td>
-          <td><router-link v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
+          <td><button type="button" class="btn btn-outline-light" v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</button></td>
 
         </tr>
       </tbody>

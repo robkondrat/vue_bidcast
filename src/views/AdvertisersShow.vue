@@ -9,14 +9,14 @@
           <h2>Email: {{ advertiser.email }}</h2>
           <iframe v-if="advertiser.youtube_url" width="560" height="315" :src="advertiser.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div v-if="$parent.advertiserId">
-            <table>
+            <table align="center">
               <thead>
                 <th>Podcast Name</th>
                 <th>Space ID</th>
                 <th>Your Bid</th>
                 <th>Winning?</th>
                 <th>Highest Bid</th>
-                <th>Time Left</th>
+                <th>Deadline (CST)</th>
                 <th>New Bid</th>
               </thead>
               <tbody>
@@ -27,13 +27,13 @@
                   <td>{{ bid.price }}</td>
                   <td>{{winning(bid.price, bid.space.highest_bid)}}</td>
                   <td>{{ bid.space.highest_bid }}</td>
-                  <td>{{ bid.space.time_left }}</td>
+                  <td>{{ bid.space.deadline }}</td>
 
-                  <td><router-link v-bind:to="'/bids/new?space_id=' + bid.space.id ">Place Bid</router-link></td>
+                  <td><button type="button" class="btn btn-outline-light" v-bind:to="'/bids/new?space_id=' + bid.space.id ">Place Bid</button></td>
                 </tr>
               </tbody>
             </table>
-            <h2><td><router-link v-bind:to="'/users/' + advertiser.id + '/edit'" v-if="$parent.advertiserId">Update Profile</router-link></td></h2>
+            <h4><button type="button" class="btn btn-outline-primary" v-bind:to="'/users/' + advertiser.id + '/edit'" v-if="$parent.advertiserId">Update Profile</button></h4>
           </div>
         </div>
       </div>

@@ -9,15 +9,14 @@
 
 ============================================================================= */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');*/
 
 ::selection {
     color: #fff;
     background-color: #f7931d;
 }
 body {
-    color: #636363;
-    font-family: 'Open Sans', sans-serif;
+    background-image: url("/prism.png");
 }
 a,
 a:focus {
@@ -102,7 +101,7 @@ p {
     line-height: 75px;
 }
 .navbar-logo img {
-    height: 45px;
+    height: 70px;
 }
 .navbar-white .navbar-nav > li > a {
     color: #333;

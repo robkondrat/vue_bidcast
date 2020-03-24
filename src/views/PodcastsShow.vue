@@ -8,7 +8,7 @@
           <h5>Description: {{ podcast.description }}</h5>
           <h5>Email: {{ podcast.email }}</h5>
 
-          <iframe v-if="podcast.youtube_url" width="560" height="315" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe v-if="podcast.youtube_url" width="560" height="315" align="center" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div>
 
           </div>
@@ -16,15 +16,15 @@
           <div v-if="$parent.podcastId === podcast.id" align=center><h2>Closed Spaces</h2></div>
           <table v-if="$parent.podcastId === podcast.id" align=center>
             <thead>
-              <th>Id</th>
+
               <th>Advertiser</th>
               <th>Length</th>
               <th>Price</th>
             </thead>
-            <tbody v-if="$parent.podcastId">
+            <tbody>
 
               <tr v-for="space in podcast.spaces" v-if="!space.active" >
-                <td>{{ space.id }}</td>
+
                 <td><router-link v-bind:to="'/advertisers/' + space.winning_advertiser_id">{{ space.winning_advertiser }}</router-link>
                 <td>{{ space.length }} sec.</td>
                 <td>{{ space.highest_bid }}</td>
@@ -34,9 +34,9 @@
           </table>
 
           <h2 align=center>Active Spaces</h2>
-          <table align=center>
+          <table class="table table-dark" align=center>
             <thead>
-              <th>Id</th>
+
               <th>Advertiser</th>
               <th>Length</th>
               <th>Price</th>
@@ -46,7 +46,7 @@
             <tbody>
 
               <tr v-for="space in podcast.spaces" v-if="space.active">
-                <td>{{ space.id }}</td>
+
                 <td><router-link v-bind:to="'/advertisers/' + space.winning_advertiser_id">{{ space.winning_advertiser }}</router-link></td>
                 <td>{{ space.length }} sec.</td>
                 <td>{{ space.highest_bid }}</td>

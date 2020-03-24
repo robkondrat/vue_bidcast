@@ -20,7 +20,7 @@
 
           <tr>
             <td>Description:</td>
-            <td><input type="text" v-model="description"></td>
+            <td><input type="textarea-desc" rows="6" v-model="description"></td>
           </tr>
 
           <tr>
@@ -53,7 +53,8 @@
             <td>Podcast or Advertiser?</td>
             <td>
               <input type="radio" v-model="type" value="Podcast"> Podcast 
-              <input type="radio" v-model="type" value="Advertiser"> Advertiser</td>
+              <input type="radio" v-model="type" value="Advertiser"> Advertiser
+            </td>
           </tr>
 
           <tr>
@@ -99,10 +100,10 @@
           formData.append("name", this.name);
           formData.append("description", this.description);
           formData.append("image", this.image);
-          formData.append("youtubeUrl", this.youtubeUrl);
+          formData.append("youtube_url", this.youtubeUrl);
           formData.append("email", this.email);
           formData.append("password", this.password);
-          formData.append("passwordConfirmation", this.passwordConfirmation);
+          formData.append("password_confirmation", this.passwordConfirmation);
           formData.append("type", this.type);
 
         axios

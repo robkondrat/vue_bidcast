@@ -4,7 +4,7 @@
     <nav class="navbar navbar-white navbar-expand-lg fixed-top">
         <div class="container">
             <div class="navbar-logo">
-                <a href="/"><img src="/headphones.ico" alt="Bidcast Logo" /></a>
+                <a href="/"><img src="/bidcast-logo.png" alt="Bidcast Logo" /></a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
@@ -100,11 +100,11 @@ main {
 }*/
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Optima, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #CE6B11;
 }
 
 #nav {

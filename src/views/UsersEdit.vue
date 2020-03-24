@@ -15,12 +15,17 @@
 
           <tr>
             <td><label>Description:</label></td>
-            <td><input type="text" v-model="user.description"></td>
+            <td><input type="textarea" v-model="user.description"></td>
           </tr>
 
           <tr>
             <td><label>Email:</label></td>
             <td><input type="text" v-model="user.email"></td>
+          </tr>
+
+          <tr>
+            <td><label>YouTube URL:</label></td>
+            <td><input type="text" v-model="user.youtubeUrl"></td>
           </tr>
 
 <!--           <tr>
@@ -55,7 +60,8 @@
         user: {
           name: "",
           description: "",
-          email: ""
+          email: "",
+          youtubeUrl: ""
           // image: ""
         },
         errors: []
@@ -79,6 +85,7 @@
           formData.append("name", this.user.name);
           formData.append("description", this.user.description);
           formData.append("email", this.user.email);
+          formData.append("youtube_url", this.user.youtubeUrl);
           // formData.append("image", this.user.image);
 
 
