@@ -7,10 +7,7 @@
           <img :src="podcast.image_url" width=300>
           <h5>Description: {{ podcast.description }}</h5>
           <h5>Email: {{ podcast.email }}</h5>
-          <!-- <input v-model="podcast.youtubeUrl"> -->
-<!--           <iframe width="420" height="315"
-          :src="podcast.youtube_url">
-          </iframe> -->
+
           <iframe v-if="podcast.youtube_url" width="560" height="315" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div>
 

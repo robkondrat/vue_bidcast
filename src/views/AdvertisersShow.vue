@@ -4,8 +4,10 @@
 
       <h1>{{ advertiser.name }}</h1>
         <div>
+          <img :src="advertiser.image_url" width=300>
           <h2>Description: {{ advertiser.description }}</h2>
           <h2>Email: {{ advertiser.email }}</h2>
+          <iframe v-if="advertiser.youtube_url" width="560" height="315" :src="advertiser.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div v-if="$parent.advertiserId">
             <table>
               <thead>
@@ -50,6 +52,7 @@
           description: "",
           image: "",
           email: "",
+          youtubeUrl: "",
           bids: []
         }
       };
