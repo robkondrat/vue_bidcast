@@ -18,6 +18,13 @@
 body {
     background-image: url("/prism.png");
 }
+h3 {
+  color: white;
+}
+img {
+  border-radius: 50%;
+  width: 300;
+}
 a,
 a:focus {
     color: #f7931d;
@@ -34,6 +41,19 @@ a:hover {
 }
 p {
     font-size: 16px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row-body:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* Loader */

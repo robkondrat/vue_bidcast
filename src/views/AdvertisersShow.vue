@@ -22,18 +22,18 @@
               <tbody>
 
                 <tr v-for="bid in advertiser.bids">
-                  <td><router-link v-bind:to="'/podcast/' + bid.space.podcast_id">{{ bid.space.podcast.name }}</router-link></td>
+                  <td><router-link v-bind:to="'/podcasts/' + bid.space.podcast_id">{{ bid.space.podcast.name }}</router-link></td>
                   <td>{{ bid.space.id }}</td>
                   <td>{{ bid.price }}</td>
                   <td>{{winning(bid.price, bid.space.highest_bid)}}</td>
                   <td>{{ bid.space.highest_bid }}</td>
                   <td>{{ bid.space.deadline }}</td>
 
-                  <td><button type="button" class="btn btn-outline-light" v-bind:to="'/bids/new?space_id=' + bid.space.id ">Place Bid</button></td>
+                  <td><router-link type="button" class="btn btn-outline-light" v-bind:to="'/bids/new?space_id=' + bid.space.id ">Place Bid</router-link></td>
                 </tr>
               </tbody>
             </table>
-            <h4><button type="button" class="btn btn-outline-primary" v-bind:to="'/users/' + advertiser.id + '/edit'" v-if="$parent.advertiserId">Update Profile</button></h4>
+            <h4><router-link type="button" class="btn btn-outline-primary" v-bind:to="'/users/' + advertiser.id + '/edit'" v-if="$parent.advertiserId">Update Profile</router-link></h4>
           </div>
         </div>
       </div>

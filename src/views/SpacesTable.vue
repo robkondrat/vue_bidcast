@@ -18,7 +18,7 @@
 
           <td>{{ space.deadline }}</td>
           <td>{{ space.highest_bid }}</td>
-          <td><button type="button" class="btn btn-outline-light" v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</button></td>
+          <td ><router-link type="button" class="btn btn-outline-light" v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
 
         </tr>
       </tbody>

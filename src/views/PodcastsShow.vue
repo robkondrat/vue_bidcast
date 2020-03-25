@@ -1,18 +1,24 @@
 <template>
   <div class="podcasts-show">
     <div class="container">
-
-      <h1>{{ podcast.name }}</h1>
-        <div>
+      <div class="row-body">
+        <div class="column">
+          <h1>{{ podcast.name }}</h1>
           <img :src="podcast.image_url" width=300>
-          <h5>Description: {{ podcast.description }}</h5>
-          <h5>Email: {{ podcast.email }}</h5>
+          <div>
+            <h3><a href="mailto:'podcast.email'">{{ podcast.email }}</a></h3>
+          </div>
+        </div>
+        <div class="column">
+          <h3>{{ podcast.description }}</h3>
 
           <iframe v-if="podcast.youtube_url" width="560" height="315" align="center" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div>
+        </div>
+      </div>
 
-          </div>
 
+      <div class="row-body">
+        <div class="column">
           <div v-if="$parent.podcastId === podcast.id" align=center><h2>Closed Spaces</h2></div>
           <table v-if="$parent.podcastId === podcast.id" align=center>
             <thead>
@@ -51,7 +57,7 @@
                 <td>{{ space.length }} sec.</td>
                 <td>{{ space.highest_bid }}</td>
                 <td>{{space.deadline}}</td>
-                <td><router-link v-if="$parent.advertiserId" v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
+                <td><router-link type="button" class="btn btn-outline-light" v-if="$parent.advertiserId" v-bind:to="'/bids/new?space_id=' + space.id ">Place Bid</router-link></td>
               </tr>
             </tbody>
           </table>
@@ -59,28 +65,36 @@
           <h5><router-link v-bind:to="'/spaces/new'" v-if="$parent.podcastId">New Space</router-link></h5>
 
           <h5><router-link v-bind:to="'/users/' + podcast.id + '/edit'" v-if="$parent.podcastId">Update Podcast</router-link></h5>
-            
-          <div class="row">
-            <div class="col-md-4 offset-md-1">
+        </div>
+
+        <div class="column">
+              
+            <div>
               <h1>New Message</h1>
               <form v-on:submit.prevent="createMessage()">
                 <div class="form-group">
                   <input class="form-control" type="text" v-model="newMessageBody">
                   </input>
                 </div>
-                  <input class="btn btn-primary" type="submit" value="Send Message"></input>
+                  <input class="btn btn-light" type="submit" value="Send Message"></input>
               </form>
             </div>
-            <div class="col-md-6 offset-md-1 mt-md-0 mt-5">
+            <div>
               <h1>All Messages</h1>
-              <div class="jumbotron mt-1 py-2" v-for="message in messages">
+              <div class="jumbotron mt-1 py-2" v-for="message in messages" v-if="message.user.type === 'Podcast'">
+                <p class="lead"><strong>{{message.name}}</strong> : {{ message.created_at }}</p>
+                <p>{{ message.body }}</p>
+              </div>
+
+              <div class="jumbotron mt-1 py-2" v-for="message in messages" v-if="message.user.type === 'Advertiser'">
                 <p class="lead"><strong>{{message.name}}</strong> : {{ message.created_at }}</p>
                 <p>{{ message.body }}</p>
               </div>
             </div>
-          </div>
 
+        </div>
 
+      </div>
         </div>
       </div>
     </div>

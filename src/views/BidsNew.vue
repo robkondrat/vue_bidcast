@@ -10,15 +10,12 @@
 
         <table align="center">
           <tr>
-            <td><label>Price:</label></td>
+            <td>Price:</td>
             <td><input type="number" v-model="price"></td>
           </tr>
-
-          <td>
-            <td></td>
-            <td><input type="submit" value="Place Bid"></td>
-          </td>
         </table>
+            <input type="submit" class="btn btn-outline-light" value="Place Bid">
+
       </form>
     </div>
 
