@@ -2,7 +2,13 @@
   <div class="spaces-table">
     <img src="/bidcast-logo.png" width=450>
 
-    <table align=center>
+    <div>
+      <h3>
+        Welcome to the world's greatest resource for both Podcasts and Advertisers to connect and do business together! Whether you are looking to generate revenue from your podcast, or if you are trying to reach a new audience for your brand, welcome!
+      </h3>
+    </div>
+
+    <table class="table table-dark" align=center>
       <thead>
         <th>Podcast Name</th>
         <th>Length</th>
