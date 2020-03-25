@@ -1,8 +1,8 @@
 <template>
   <div class="advertisers-show">
     <div class="container">
-      <div class="row-body">
-        <div class="column">
+      <div class="row">
+        <div class="col-md-6">
           <h1>{{ advertiser.name }}</h1>
           <div>
             <img class="avatar" :src="advertiser.image_url" width=300>
@@ -11,13 +11,13 @@
             </div>
           </div>
         </div>
-        <div class="column">
+        <div class="col-md-6">
           <div>
             <h3>{{ advertiser.description }}</h3>
             <iframe v-if="advertiser.youtube_url" width="560" height="315" :src="advertiser.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
-        <div v-if="$parent.advertiserId">
+        <div v-if="$parent.advertiserId" align="center">
           <table class="table table-dark" align="center">
             <thead>
               <th>Podcast Name</th>

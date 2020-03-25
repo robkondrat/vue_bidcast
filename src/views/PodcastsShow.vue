@@ -1,15 +1,15 @@
 <template>
   <div class="podcasts-show">
     <div class="container">
-      <div class="row-body">
-        <div class="column">
+      <div class="row">
+        <div class="col-md-6">
           <h1>{{ podcast.name }}</h1>
           <img class="avatar" :src="podcast.image_url" width=300>
           <div>
             <h3><a href="mailto:'podcast.email'">{{ podcast.email }}</a></h3>
           </div>
         </div>
-        <div class="column">
+        <div class="col-md-6">
           <h3>{{ podcast.description }}</h3>
 
           <iframe v-if="podcast.youtube_url" width="560" height="315" align="center" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -17,8 +17,8 @@
       </div>
 
 
-      <div class="row-body">
-        <div class="column">
+      <div class="row">
+        <div class="col-md-6">
           <div v-if="$parent.podcastId === podcast.id " align=center><h2>Closed Spaces</h2></div>
           <table v-if="$parent.podcastId === podcast.id" class="table table-light" align=center>
             <thead>
@@ -67,7 +67,7 @@
           <h5><router-link class="btn btn-primary" v-bind:to="'/users/' + podcast.id + '/edit'" v-if="$parent.podcastId">Update Podcast</router-link></h5>
         </div>
 
-        <div class="column">
+        <div class="col-md-6">
               
             <div>
               <h1>New Message</h1>

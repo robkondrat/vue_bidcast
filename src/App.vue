@@ -11,7 +11,6 @@
             </button>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav ml-auto">
-                    <li><router-link to="/podcasts">Podcasts</router-link></li>
                     <li><router-link v-bind:to="'/podcasts/' + podcastId" v-if="podcastId">Podcast Home</router-link></li>
 
                     <li><router-link v-bind:to="'/advertisers/' + advertiserId" v-if="advertiserId">Advertiser Home</router-link></li>
