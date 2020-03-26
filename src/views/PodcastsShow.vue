@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h3>{{ podcast.description }}</h3>
+          <h3 class="md-5">{{ podcast.description }}</h3>
 
           <iframe v-if="podcast.youtube_url" width="560" height="315" align="center" :src="podcast.youtube_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -81,20 +81,17 @@
             </div>
             <div>
               <h1>All Messages</h1>
-              <div class="jumbotron mt-1 py-2" id="podcast-message" v-for="message in messages" v-if="message.user_type === 'Podcast'">
+              <div 
+
+              v-for="message in messages"
+
+              v-bind:class="{podcastMessage: message.user_type == 'Podcast', advertiserMessage: message.user_type !== 'Podcast'}"
+
+                >
                 <p class="lead"><strong>{{message.name}}</strong> : {{ message.created_at }}</p>
                 <p>{{ message.body }}</p>
               </div>
 
-              <div class="jumbotron mt-1 py-2" id="advertiser-message" v-for="message in messages" v-if="message.user_type === 'Advertiser'">
-                <p class="lead"><strong>{{message.name}}</strong> : {{ message.created_at }}</p>
-                <p>{{ message.body }}</p>
-              </div>
-
-<!--               <div class="jumbotron mt-1 py-2" v-for="message in messages" v-if="message.user.id === $parent.advertiserId">
-                <p class="lead"><strong>{{message.name}}</strong> : {{ message.created_at }}</p>
-                <p>{{ message.body }}</p>
-              </div> -->
             </div>
 
         </div>
@@ -133,6 +130,7 @@
         },
         messages: [],
         newMessageBody: "",
+        // user_type: ""
       };
     },
     created: function() {
@@ -195,7 +193,6 @@
 
         axios.post("/api/messages", params).then(response => {
           this.newMessageBody = "";
-          this.messages.unshift(response.data);
         });
       },
       destroyPodcast: function() {

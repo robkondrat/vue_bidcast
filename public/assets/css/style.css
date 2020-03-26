@@ -19,14 +19,22 @@ body {
     background-image: url("/prism.png");
 }
 
-#podcast-message {
+.podcastMessage {
     color: #254a71;
     background-color: white;
+    margin-top: 1px;
+    padding-top: 2px, 0px, 2px, 0px;
+    border-radius: 10px;
 }
 
-#advertiser-message {
+
+
+.advertiserMessage {
     color: white;
     background-color: #254a71;
+    margin-top: 1px;
+    padding-top: 2px, 0px, 2px, 0px;
+    border-radius: 10px;
 }
 
 h3 {
