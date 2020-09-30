@@ -57,9 +57,12 @@
           active: true
         }
 
-        axios.post("/api/spaces", params).then(response => {
-          this.$router.push("/podcasts/" + response.data.podcast.id );
-        }).catch(error => console.log(error.response));
+        axios.post("/api/spaces", params)
+          .then(response => {
+            this.$router
+            .push("/podcasts/" + response.data.podcast.id );
+          })
+          .catch(error => console.log(error.response));
       }
     }
   }
