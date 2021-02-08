@@ -9,7 +9,7 @@ import axios from "axios";
 
 
 axios.defaults.baseURL = 
-  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://vibrant-dubinsky-80696f.netlify.app";
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://hidden-dawn-34584.herokuapp.com/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
